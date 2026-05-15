@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --navy: #1F2A44;
+    --navy-deep: #141C32;
+    --beige: #E8DCC8;
+    --beige-warm: #F1E8D6;
+    --beige-soft: #FAF5EC;
+    --gold: #C6A75E;
+    --gold-deep: #A88947;
+    --gold-soft: #E2C98A;
+    --cream: #FFFFFF;
+    --text-muted: #6B6657;
+    --border: #D4C6AC;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--beige);
+    color: var(--navy);
+    font-family: var(--font-inter), system-ui, sans-serif;
+    font-weight: 400;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-cormorant), Georgia, serif;
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    color: var(--navy);
+  }
+
+  ::selection {
+    background-color: var(--gold);
+    color: var(--navy);
+  }
+
+  /* Custom focus ring */
+  *:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--beige-warm);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--gold);
+    border-radius: 0;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--gold-deep);
+  }
+}
+
+@layer components {
+  .container-base {
+    @apply max-w-container mx-auto px-6 md:px-12 lg:px-20;
+  }
+
+  .section-padding {
+    @apply py-20 md:py-32 lg:py-40;
+  }
+
+  .pre-heading {
+    @apply text-gold text-xs tracking-ultra uppercase font-inter font-medium;
+  }
+
+  .display-heading {
+    @apply font-cormorant font-light leading-tight text-navy;
+  }
+
+  /* Editorial gold left-bar quote */
+  .gold-quote {
+    @apply relative pl-6 border-l-2 border-gold italic text-muted;
+  }
+
+  /* Image hover scale wrapper */
+  .img-hover {
+    @apply overflow-hidden;
+  }
+  .img-hover img {
+    @apply transition-transform duration-700 ease-out;
+  }
+  .img-hover:hover img {
+    @apply scale-105;
+  }
+
+  /* Gold underline link */
+  .link-underline {
+    @apply relative inline-flex items-center gap-2 text-sm tracking-widest uppercase font-inter font-medium text-navy pb-1;
+  }
+  .link-underline::after {
+    content: '';
+    @apply absolute left-0 bottom-0 h-px w-full bg-gold transition-all duration-400;
+  }
+  .link-underline:hover::after {
+    @apply bg-navy;
+  }
+
+  /* Section heading divider */
+  .gold-divider {
+    @apply block w-16 h-px bg-gold mx-auto;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Custom utility for letter-spacing display headings */
+  .tracking-display {
+    letter-spacing: -0.015em;
+  }
+
+  /* Lenis smooth-scroll body class */
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  /* Hide scroll on mobile menu open */
+  .no-scroll {
+    overflow: hidden;
+  }
+}
