@@ -46,7 +46,7 @@ export function VentureCard({ venture, index = 0, variant = 'feature' }: Venture
           {/* Dark gradient overlay */}
           <div
             aria-hidden
-            className="absolute inset-0 bg-gradient-to-t from-navy-deep/95 via-navy-deep/30 to-transparent"
+            className="absolute inset-0 bg-gradient-to-t from-navy-deep via-navy-deep/75 via-40% to-navy-deep/10"
           />
           {/* Status pill */}
           <span
@@ -61,16 +61,16 @@ export function VentureCard({ venture, index = 0, variant = 'feature' }: Venture
             {venture.status}
           </span>
           {/* Content overlay */}
-          <div className="absolute inset-x-0 bottom-0 p-6 md:p-8 text-beige">
+          <div className="absolute inset-x-0 bottom-0 p-6 md:p-8 text-beige-soft">
             <p className="text-[11px] tracking-widest uppercase text-gold-soft font-inter font-medium flex items-center gap-1.5">
               <MapPin className="w-3 h-3" strokeWidth={1.5} />
               {venture.location}
             </p>
-            <h3 className="mt-2 font-cormorant text-3xl md:text-4xl font-light leading-tight tracking-display">
+            <h3 className="mt-2 font-cormorant text-3xl md:text-4xl font-light leading-tight tracking-display text-beige-soft drop-shadow-md">
               {venture.name}
             </h3>
             {variant === 'feature' && (
-              <p className="mt-2 text-sm text-beige/80 max-w-md line-clamp-2">
+              <p className="mt-2 text-sm text-beige-soft/90 max-w-md line-clamp-2">
                 {venture.tagline}
               </p>
             )}

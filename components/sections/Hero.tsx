@@ -40,10 +40,52 @@ export function Hero() {
             className="object-cover"
           />
         </div>
-        {/* Gradient overlay */}
+        {/* Base darkening so text always reads */}
         <div
           aria-hidden
-          className="absolute inset-0 bg-gradient-to-b from-navy-deep/70 via-navy-deep/40 to-navy-deep/80"
+          className="absolute inset-0 bg-navy-deep/55"
+        />
+
+        {/* Animated premium gradient — drifting aurora of navy, warm gold & plum */}
+        <div aria-hidden className="absolute inset-0 overflow-hidden animate-hue-shift">
+          {/* Indigo / cool navy blob — top-left */}
+          <div className="absolute -inset-1/3 will-change-transform animate-drift-1 mix-blend-screen">
+            <div
+              className="w-full h-full"
+              style={{
+                background:
+                  'radial-gradient(circle at 30% 35%, rgba(60, 80, 150, 0.55) 0%, rgba(60, 80, 150, 0) 55%)',
+              }}
+            />
+          </div>
+
+          {/* Warm gold / amber blob — bottom-right */}
+          <div className="absolute -inset-1/3 will-change-transform animate-drift-2 mix-blend-screen">
+            <div
+              className="w-full h-full"
+              style={{
+                background:
+                  'radial-gradient(circle at 75% 65%, rgba(198, 167, 94, 0.42) 0%, rgba(198, 167, 94, 0) 55%)',
+              }}
+            />
+          </div>
+
+          {/* Deep plum / burgundy blob — center, slow drift */}
+          <div className="absolute -inset-1/3 will-change-transform animate-drift-3 mix-blend-soft-light">
+            <div
+              className="w-full h-full"
+              style={{
+                background:
+                  'radial-gradient(circle at 50% 50%, rgba(120, 55, 95, 0.55) 0%, rgba(120, 55, 95, 0) 60%)',
+              }}
+            />
+          </div>
+        </div>
+
+        {/* Vertical readability gradient — keeps top + bottom dark for text contrast */}
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-gradient-to-b from-navy-deep/70 via-navy-deep/20 to-navy-deep/80"
         />
       </motion.div>
 

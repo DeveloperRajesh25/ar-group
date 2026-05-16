@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 
@@ -11,31 +12,28 @@ export function Logo({
   size?: 'sm' | 'md' | 'lg';
 }) {
   const sizes = {
-    sm: 'text-lg',
-    md: 'text-2xl',
-    lg: 'text-3xl',
+    sm: 'h-6',
+    md: 'h-8',
+    lg: 'h-12',
   };
   return (
     <Link
       href="/"
       className={cn(
-        'inline-flex flex-col leading-none font-cormorant tracking-display',
-        invert ? 'text-beige' : 'text-navy',
+        'inline-flex items-center',
         className
       )}
       aria-label="AL Group — Home"
     >
-      <span className={cn('font-medium', sizes[size])}>
-        AL <span className="text-gold">Group</span>
-      </span>
-      <span
-        className={cn(
-          'mt-0.5 text-[10px] tracking-[0.32em] uppercase font-inter font-medium',
-          invert ? 'text-beige/70' : 'text-muted'
-        )}
-      >
-        Envision · Invest · Grow
-      </span>
+      <Image
+        src="/logo.png"
+        alt="AL Group"
+        width={240}
+        height={120}
+        priority
+        className={cn('w-auto', sizes[size], invert ? 'invert' : null)}
+      />
+      <span className="sr-only">AL Group</span>
     </Link>
   );
 }

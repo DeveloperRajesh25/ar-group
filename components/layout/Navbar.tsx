@@ -62,8 +62,10 @@ export function Navbar() {
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    'relative text-xs tracking-widest uppercase font-inter font-medium transition-colors',
-                    'text-navy hover:text-gold-deep group'
+                    'relative text-xs tracking-widest uppercase font-inter font-medium transition-colors group',
+                    scrolled
+                      ? 'text-navy hover:text-gold-deep'
+                      : 'text-beige hover:text-gold-soft drop-shadow-sm'
                   )}
                 >
                   {link.label}
@@ -83,12 +85,22 @@ export function Navbar() {
           <div className="flex items-center gap-4 md:gap-6">
             <a
               href={telLink(CONTACT.phone)}
-              className="hidden md:inline-flex items-center gap-2 text-xs tracking-widest uppercase font-inter font-medium text-navy hover:text-gold-deep transition-colors"
+              className={cn(
+                'hidden md:inline-flex items-center gap-2 text-xs tracking-widest uppercase font-inter font-medium transition-colors',
+                scrolled
+                  ? 'text-navy hover:text-gold-deep'
+                  : 'text-beige hover:text-gold-soft drop-shadow-sm'
+              )}
             >
               <Phone className="w-3.5 h-3.5" strokeWidth={1.5} />
               {CONTACT.phone}
             </a>
-            <Button href="/contact" variant="outline" size="sm" className="hidden md:inline-flex">
+            <Button
+              href="/contact"
+              variant={scrolled ? 'outline' : 'outline-cream'}
+              size="sm"
+              className="hidden md:inline-flex"
+            >
               Book Visit
             </Button>
 
@@ -96,7 +108,10 @@ export function Navbar() {
             <button
               type="button"
               onClick={() => setOpen(true)}
-              className="lg:hidden flex items-center justify-center w-10 h-10 text-navy"
+              className={cn(
+                'lg:hidden flex items-center justify-center w-10 h-10',
+                scrolled ? 'text-navy' : 'text-beige'
+              )}
               aria-label="Open menu"
             >
               <Menu className="w-6 h-6" strokeWidth={1.5} />
