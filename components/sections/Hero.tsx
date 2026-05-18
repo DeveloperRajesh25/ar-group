@@ -87,7 +87,7 @@ export function Hero() {
               scale: [1, 1.15, 0.95, 1],
             }}
             transition={{
-              duration: 38,
+              duration: 14,
               ease: 'easeInOut',
               repeat: Infinity,
             }}
@@ -110,7 +110,7 @@ export function Hero() {
               scale: [1.05, 0.9, 1.18, 1.05],
             }}
             transition={{
-              duration: 46,
+              duration: 18,
               ease: 'easeInOut',
               repeat: Infinity,
             }}
@@ -133,7 +133,7 @@ export function Hero() {
               scale: [1.08, 0.96, 1.12, 1.08],
             }}
             transition={{
-              duration: 54,
+              duration: 22,
               ease: 'easeInOut',
               repeat: Infinity,
             }}
