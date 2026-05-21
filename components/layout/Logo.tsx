@@ -12,15 +12,20 @@ export function Logo({
   size?: 'sm' | 'md' | 'lg';
 }) {
   const sizes = {
-    sm: 'h-6',
-    md: 'h-8',
-    lg: 'h-12',
+    sm: 'h-7',
+    md: 'h-10',
+    lg: 'h-14',
+  };
+  const labelSizes = {
+    sm: 'text-[8px] tracking-[0.32em]',
+    md: 'text-[9px] tracking-[0.42em]',
+    lg: 'text-[10px] tracking-[0.5em]',
   };
   return (
     <Link
       href="/"
       className={cn(
-        'inline-flex items-center',
+        'inline-flex flex-col items-center justify-center leading-none',
         className
       )}
       aria-label="AL Group — Home"
@@ -33,7 +38,15 @@ export function Logo({
         priority
         className={cn('w-auto', sizes[size], invert ? 'invert' : null)}
       />
-      <span className="sr-only">AL Group</span>
+      <span
+        className={cn(
+          'mt-1.5 uppercase font-inter font-medium',
+          labelSizes[size],
+          invert ? 'text-beige' : 'text-gold-deep'
+        )}
+      >
+        AL Group
+      </span>
     </Link>
   );
 }

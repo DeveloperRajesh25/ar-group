@@ -17,6 +17,8 @@ import {
 } from 'lucide-react';
 import { PageHero } from '@/components/sections/PageHero';
 import { Amenities } from '@/components/sections/Amenities';
+import { GroupedAmenities } from '@/components/sections/GroupedAmenities';
+import { Specifications } from '@/components/sections/Specifications';
 import { Approvals } from '@/components/sections/Approvals';
 import { Button } from '@/components/ui/Button';
 import { FadeIn } from '@/components/ui/FadeIn';
@@ -198,11 +200,20 @@ export default async function VenturePage({
         </section>
       )}
 
-      {/* Amenities */}
-      {venture.amenities?.length > 0 && <Amenities amenities={venture.amenities} />}
+      {/* Amenities — grouped (with images) if available, else flat icon grid */}
+      {venture.amenityGroups?.length ? (
+        <GroupedAmenities groups={venture.amenityGroups} />
+      ) : (
+        venture.amenities?.length > 0 && <Amenities amenities={venture.amenities} />
+      )}
+
+      {/* Specifications */}
+      {venture.specifications?.length ? (
+        <Specifications groups={venture.specifications} />
+      ) : null}
 
       {/* Floor plans */}
-      {venture.floorPlanImages?.length > 0 && (
+      {(venture.floorPlanGroups?.length || venture.floorPlanImages?.length) ? (
         <section className="section-padding bg-beige">
           <div className="container-base">
             <FadeIn direction="up" className="text-center mb-14">
@@ -214,10 +225,14 @@ export default async function VenturePage({
               </h2>
               <div className="w-16 h-px bg-gold mx-auto mt-8" />
             </FadeIn>
-            <FloorPlanViewer images={venture.floorPlanImages} ventureName={venture.name} />
+            <FloorPlanViewer
+              images={venture.floorPlanImages}
+              groups={venture.floorPlanGroups}
+              ventureName={venture.name}
+            />
           </div>
         </section>
-      )}
+      ) : null}
 
       {/* Gallery */}
       {venture.gallery?.length > 0 && (

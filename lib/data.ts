@@ -10,15 +10,34 @@ export interface Amenity {
   icon: string; // lucide-react icon name
 }
 
+export interface AmenityGroup {
+  title: string;
+  image?: string;
+  items: string[];
+}
+
+export interface FloorPlanGroup {
+  title: string;
+  images: { label: string; src: string }[];
+}
+
+export interface SpecGroup {
+  title: string;
+  items: string[];
+}
+
 export interface Venture {
   slug: string;
   name: string;
   tagline: string;
   status: VentureStatus;
   order: number;
+  listingImage?: string; // image shown on the /ventures listing card (clubhouse front, etc.)
   coverImage: string;
+  clubhouseImage?: string;
   gallery: string[];
   floorPlanImages: string[];
+  floorPlanGroups?: FloorPlanGroup[];
   propertyType: string;
   location: string;
   size: string;
@@ -29,6 +48,8 @@ export interface Venture {
   about: string[];
   features: string[];
   amenities: Amenity[];
+  amenityGroups?: AmenityGroup[];
+  specifications?: SpecGroup[];
   locationAdvantages: string[];
   googleMapsEmbed: string;
   brochurePdf?: string;
@@ -55,69 +76,192 @@ export const VENTURES: Venture[] = [
     slug: 'kamadhenu-pearls',
     name: 'Kamadhenu Pearls',
     tagline:
-      'Premium villa community with modern infrastructure and investment potential.',
+      'Spanish & French themed luxury villas in an 18-acre integrated township — a community built for generations.',
     status: 'Live',
     order: 1,
-    coverImage:
-      'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1920&q=80',
+    listingImage: '/kamadhenu-infra-1/Gallery/cover.png',
+    coverImage: '/kamadhenu-infra-1/Gallery/cover.png',
+    clubhouseImage: '/kamadhenu-infra-1/Gallery/2.png',
     gallery: [
-      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1600&q=80',
-      'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1600&q=80',
+      '/kamadhenu-infra-1/Gallery/1.png',
+      '/kamadhenu-infra-1/Gallery/2.png',
+      '/kamadhenu-infra-1/Gallery/4.png',
+      '/kamadhenu-infra-1/Gallery/5.webp',
+      '/kamadhenu-infra-1/Gallery/6.png',
+      '/kamadhenu-infra-1/Gallery/cover.png',
     ],
     floorPlanImages: [
-      'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80',
+      '/kamadhenu-infra-1/EAST FACING FLOOR PLAN/Ground floor .jpeg',
+      '/kamadhenu-infra-1/EAST FACING FLOOR PLAN/1st floor.jpeg',
+      '/kamadhenu-infra-1/EAST FACING FLOOR PLAN/2nd floor.png',
+      '/kamadhenu-infra-1/WEST FACING FLOOR PLAN/ground floor.png',
+      '/kamadhenu-infra-1/WEST FACING FLOOR PLAN/1st floor.png',
+      '/kamadhenu-infra-1/WEST FACING FLOOR PLAN/2nd floor.png',
     ],
-    propertyType: 'Premium Villas',
-    location: 'Bhogapuram, Andhra Pradesh',
-    size: '1500 - 3000 sqft',
-    configurations: '3 & 4 BHK Villas',
-    possessionDate: 'Dec 2026',
+    floorPlanGroups: [
+      {
+        title: 'East Facing Villa',
+        images: [
+          { label: 'Ground Floor', src: '/kamadhenu-infra-1/EAST FACING FLOOR PLAN/Ground floor .jpeg' },
+          { label: 'First Floor', src: '/kamadhenu-infra-1/EAST FACING FLOOR PLAN/1st floor.jpeg' },
+          { label: 'Second Floor', src: '/kamadhenu-infra-1/EAST FACING FLOOR PLAN/2nd floor.png' },
+        ],
+      },
+      {
+        title: 'West Facing Villa',
+        images: [
+          { label: 'Ground Floor', src: '/kamadhenu-infra-1/WEST FACING FLOOR PLAN/ground floor.png' },
+          { label: 'First Floor', src: '/kamadhenu-infra-1/WEST FACING FLOOR PLAN/1st floor.png' },
+          { label: 'Second Floor', src: '/kamadhenu-infra-1/WEST FACING FLOOR PLAN/2nd floor.png' },
+        ],
+      },
+    ],
+    propertyType: 'Premium Themed Villas',
+    location: 'Gundimeda, Vijayawada–Amaravati Corridor',
+    size: '18-acre integrated township',
+    configurations: 'East & West Facing Villas',
+    possessionDate: 'Ready to Occupy',
     reraNumber: 'P02400005821',
+    developerWebsite: 'https://www.kamadhenuinfra.com/projects/villas',
     about: [
-      'Kamadhenu Pearls is a thoughtfully crafted villa community designed for families who value privacy, premium finishes, and long-term investment growth. Set against the rapidly developing Bhogapuram corridor, the project blends contemporary architecture with serene, landscaped surroundings.',
-      'Every villa is built around natural light, airflow, and lifestyle — featuring spacious living areas, modern kitchens, and private outdoor space. The community is RERA approved and developed in partnership with one of the region\'s most trusted builders.',
+      'Kamadhenu Pearls is a Spanish & French themed luxury villa community set within an 18-acre integrated township on the rapidly growing Vijayawada–Amaravati corridor. Every villa is finished with arched elements, clean lines, warm tones and classic facades — built ready-to-occupy for families who value privacy, character and long-term value.',
+      'Residents enjoy access to the region\'s largest clubhouse, three themed amenity zones (Kids Park, Senior Citizen Park and Clubhouse), and 24/7 smart-infrastructure security — all wrapped in landscaped tree-lined avenues and private gardens.',
     ],
     features: [
-      'Spacious 3 & 4 BHK villa configurations',
-      'Italian marble flooring in living areas',
-      'Modular kitchen with chimney and hob',
-      'Premium sanitary and CP fittings',
-      'Private landscaped garden in every villa',
-      'Covered car parking for two vehicles',
-      'Smart home automation ready',
-      '24/7 power backup and water supply',
+      '18-acre integrated township',
+      'Spanish & French themed luxury villas',
+      'Ready-to-occupy premium homes',
+      "Access to the region's largest clubhouse",
+      '24/7 security with smart infrastructure',
+      'Landscaped avenues & private gardens',
+      'East and West facing villa options',
+      'RCC framed structure with quality finishes',
     ],
     amenities: [
       { name: 'Clubhouse', icon: 'Building2' },
       { name: 'Swimming Pool', icon: 'Waves' },
-      { name: 'Fitness Center', icon: 'Dumbbell' },
-      { name: "Children's Play Area", icon: 'Baby' },
-      { name: 'Landscaped Gardens', icon: 'Trees' },
-      { name: 'Jogging Track', icon: 'Footprints' },
-      { name: 'Indoor Games', icon: 'Gamepad2' },
-      { name: 'Banquet Hall', icon: 'Utensils' },
-      { name: '24/7 Security', icon: 'Shield' },
-      { name: 'CCTV Surveillance', icon: 'Video' },
+      { name: 'Gymnasium', icon: 'Dumbbell' },
+      { name: 'Multi Purpose Hall', icon: 'Utensils' },
+      { name: "Kids Play Area", icon: 'Baby' },
+      { name: 'Landscaped Avenues', icon: 'Trees' },
+      { name: 'Walkway & Jogging Track', icon: 'Footprints' },
+      { name: 'Yoga / Aerobics', icon: 'Activity' },
+      { name: 'Mini Theatre', icon: 'Clapperboard' },
+      { name: '24/7 Smart Security', icon: 'Shield' },
+    ],
+    amenityGroups: [
+      {
+        title: 'Clubhouse Amenities',
+        image: '/kamadhenu-infra-1/Gallery/2.png',
+        items: [
+          'Swimming Pool',
+          'Kids Play Area',
+          'Multi Purpose Hall',
+          'Outdoor Deck',
+          'Party Lawn',
+          'Yoga / Aerobics',
+          'Mini Theatre',
+          'Gymnasium',
+          'Terrace Party Area',
+        ],
+      },
+      {
+        title: 'Kids Themed Park',
+        image: '/kamadhenu-infra-1/Gallery/1.png',
+        items: [
+          'Kids Play Area',
+          'Kids Jungle Gym',
+          'Running Zone',
+          'Kids Cycling Track',
+          'Amphi Theatre',
+          'Khabbadi Zone',
+          'Box Cricket',
+          'Outdoor Badminton Court',
+          'Kids Hammock',
+          'Sand Pit',
+          'Reading Zone',
+          'Skating Area',
+          'Trampoline Zone',
+        ],
+      },
+      {
+        title: 'Senior Citizen Park',
+        image: '/kamadhenu-infra-1/Gallery/4.png',
+        items: [
+          'Walkway & Jogging Track',
+          'Acupuncture Pathway',
+          'Yoga Zone',
+          'Reflexology Pathway',
+          'Meditation Zone',
+          'Outdoor Gym',
+          'Outdoor Chess Play Area',
+          'Hydration Station',
+          'Gardening Zone',
+          'Star Gazing Zone',
+          'Rock Climbing Wall',
+        ],
+      },
+    ],
+    specifications: [
+      {
+        title: 'Structure',
+        items: [
+          'RCC framed structure designed for seismic safety',
+          'High-grade sand and cement composition',
+          'External walls in solid block masonry',
+        ],
+      },
+      {
+        title: 'Flooring & Painting',
+        items: [
+          'Vitrified / premium tile flooring in living and bedrooms',
+          'Anti-skid tiles in toilets and balconies',
+          'Internal walls finished with putty + emulsion paint',
+          'Exterior in textured weather-proof finish',
+        ],
+      },
+      {
+        title: 'Doors, Windows & Ventilators',
+        items: [
+          'Designer main door with quality hardware',
+          'Internal flush doors with laminated finish',
+          'UPVC / aluminium windows with mosquito mesh',
+          'French doors opening to balconies / decks',
+        ],
+      },
+      {
+        title: 'Electrical',
+        items: [
+          'Concealed copper wiring of reputed make',
+          'Modular switches and protected MCB distribution',
+          'Provisions for AC, geyser, chimney and hob',
+          'Adequate light, power and data points throughout',
+        ],
+      },
+      {
+        title: 'Plumbing & Water-proofing',
+        items: [
+          'CPVC / UPVC plumbing of reputed brands',
+          'Premium sanitary ware and CP fittings',
+          'Treated water supply to every villa',
+          'Comprehensive water-proofing for terraces and wet areas',
+        ],
+      },
     ],
     locationAdvantages: [
-      '15 minutes from upcoming Bhogapuram International Airport',
-      'Close proximity to NH-16 connecting Vizag and Visakhapatnam',
-      'Reputed schools and colleges within 5 km',
-      'Multi-specialty hospitals nearby',
-      'Beachside drive and tourist destinations within easy reach',
-      'Excellent appreciation potential in a rapidly growing belt',
+      'Located in the Vijayawada–Amaravati growth corridor',
+      'Strong connectivity to NH-16 and core city',
+      'Reputed schools, colleges and hospitals nearby',
+      'Walking distance from upcoming commercial hubs',
+      'Strong long-term appreciation potential',
+      'Peaceful, gated 18-acre township setting',
     ],
     googleMapsEmbed:
-      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3804.5!2d83.21!3d17.73!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0!2sBhogapuram!5e0!3m2!1sen!2sin!4v1700000000000',
+      'https://www.google.com/maps?q=Kamadhenu+Pearls+Gundimeda&output=embed',
     seoTitle:
-      'Kamadhenu Pearls | Premium Villas in Bhogapuram | RERA Approved | AL Group',
+      'Kamadhenu Pearls | Premium Themed Villas in Vijayawada | RERA Approved | AL Group',
     seoDescription:
-      'Premium 3 & 4 BHK villa community at Bhogapuram. RERA approved, world-class amenities and strong investment potential. Book your site visit with AL Group today.',
+      'Kamadhenu Pearls — Spanish & French themed luxury villas in an 18-acre integrated township at Gundimeda, Vijayawada. RERA approved, ready-to-occupy. Book your visit with AL Group.',
   },
   {
     slug: 'bliss-valley',
@@ -126,6 +270,7 @@ export const VENTURES: Venture[] = [
       'Luxury plotted development offering peaceful surroundings and future-ready growth opportunities.',
     status: 'Live',
     order: 2,
+    brochurePdf: '/Brochure_Bliss%20Valley.pdf',
     coverImage:
       'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1920&q=80',
     gallery: [

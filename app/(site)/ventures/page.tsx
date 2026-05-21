@@ -9,9 +9,17 @@ import { getVentures } from '@/lib/sanity/queries';
 import { cn } from '@/lib/utils';
 
 export const metadata: Metadata = {
-  title: 'Our Ventures | AL Group',
+  title: 'Premium Villas & Plots in Vijayawada, Visakhapatnam, Bhogapuram, Vizianagaram | AL Group',
   description:
-    "Discover AL Group's premium real estate ventures — RERA, VMRDA & CRDA approved villas and plotted developments across Vizag, Bhogapuram, and Andhra Pradesh.",
+    "Premium villas and RERA-approved plots in Vijayawada, Visakhapatnam, Bhogapuram and Vizianagaram. Explore AL Group's hand-picked real estate ventures across Andhra Pradesh.",
+  keywords: [
+    'premium villas Vijayawada',
+    'plots Visakhapatnam',
+    'Bhogapuram plots',
+    'Vizianagaram real estate',
+    'RERA approved villas Andhra Pradesh',
+    'AL Group ventures',
+  ],
   alternates: { canonical: '/ventures' },
 };
 
@@ -34,6 +42,19 @@ export default async function VenturesPage() {
         size="md"
       />
 
+      {/* SEO location strip */}
+      <section className="bg-beige-warm border-b border-line/40 py-7">
+        <div className="container-base">
+          <p className="text-center text-sm md:text-base text-navy/85 leading-relaxed font-inter">
+            We have <span className="font-medium text-navy">premium villas &amp; plots</span> in{' '}
+            <span className="text-gold-deep font-medium">Vijayawada</span>,{' '}
+            <span className="text-gold-deep font-medium">Visakhapatnam</span>,{' '}
+            <span className="text-gold-deep font-medium">Bhogapuram</span> and{' '}
+            <span className="text-gold-deep font-medium">Vizianagaram</span>.
+          </p>
+        </div>
+      </section>
+
       <section className="section-padding bg-beige">
         <div className="container-base">
           <div className="space-y-16 md:space-y-24">
@@ -53,7 +74,7 @@ export default async function VenturesPage() {
                         )}
                       >
                         <Image
-                          src={v.coverImage}
+                          src={v.listingImage || v.coverImage}
                           alt={`${v.name} — ${v.propertyType} in ${v.location}`}
                           fill
                           sizes="(max-width: 1024px) 100vw, 60vw"
