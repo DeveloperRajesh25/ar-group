@@ -193,6 +193,7 @@ export function Hero() {
             promise — across Andhra Pradesh.
           </motion.p>
 
+
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -208,6 +209,15 @@ export function Hero() {
           </motion.div>
         </div>
       </motion.div>
+
+      <motion.p
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.65, duration: 0.8 }}
+        className="absolute bottom-6 right-6 md:bottom-8 md:right-8 z-10 max-w-[70vw] text-right text-[11px] md:text-xs tracking-wide text-beige/70 font-inter"
+      >
+        Image created with AI. For representational purposes only.
+      </motion.p>
 
       {/* Scroll indicator — bottom-left, out of the way of the visible image */}
       <motion.div

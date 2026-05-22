@@ -17,9 +17,9 @@ export default async function HomePage() {
     <>
       <Hero />
       <Approvals />
+      <VenturesPreview ventures={ventures} />
       <AboutPreview />
       <WhyChooseUs />
-      <VenturesPreview ventures={ventures} />
       <PartnersPreview partners={partners} />
       <CTASection />
     </>
