@@ -14,11 +14,14 @@ import {
   Calendar,
   FileCheck,
   Building,
-} from 'lucide-react';
+} from 'lucide-react'; // Check used in location advantages section
 import { PageHero } from '@/components/sections/PageHero';
 import { Amenities } from '@/components/sections/Amenities';
 import { GroupedAmenities } from '@/components/sections/GroupedAmenities';
+import { VisualAmenities } from '@/components/sections/VisualAmenities';
 import { Specifications } from '@/components/sections/Specifications';
+import { CollapsibleSpecifications } from '@/components/sections/CollapsibleSpecifications';
+import { CollapsibleFeatures } from '@/components/sections/CollapsibleFeatures';
 import { Approvals } from '@/components/sections/Approvals';
 import { Button } from '@/components/ui/Button';
 import { FadeIn } from '@/components/ui/FadeIn';
@@ -97,7 +100,7 @@ export default async function VenturePage({
             sizes="100vw"
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-navy-deep/40 via-navy-deep/40 to-navy-deep/85" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black/85" />
         </div>
         <div className="relative container-base h-full flex flex-col justify-end pb-16 md:pb-20">
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
@@ -170,46 +173,19 @@ export default async function VenturePage({
         </div>
       </section>
 
-      {/* Features */}
-      {venture.features?.length > 0 && (
-        <section className="py-20 md:py-28 bg-beige-soft">
-          <div className="container-base">
-            <FadeIn direction="up" className="text-center mb-14">
-              <p className="text-gold text-xs tracking-ultra uppercase font-inter font-medium mb-4">
-                — Features
-              </p>
-              <h2 className="font-cormorant text-4xl md:text-5xl font-light text-navy tracking-display">
-                Premium <em className="italic font-normal">Features</em>
-              </h2>
-              <div className="w-16 h-px bg-gold mx-auto mt-8" />
-            </FadeIn>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-5 max-w-4xl mx-auto">
-              {venture.features.map((f, i) => (
-                <FadeIn key={i} direction="up" delay={i * 0.04}>
-                  <li className="flex items-start gap-3">
-                    <Check
-                      className="w-5 h-5 text-gold-deep mt-0.5 shrink-0"
-                      strokeWidth={1.6}
-                    />
-                    <span className="text-navy/90 leading-relaxed">{f}</span>
-                  </li>
-                </FadeIn>
-              ))}
-            </ul>
-          </div>
-        </section>
-      )}
+      {/* Features — Collapsible */}
+      {venture.features?.length > 0 && <CollapsibleFeatures features={venture.features} />}
 
-      {/* Amenities — grouped (with images) if available, else flat icon grid */}
+      {/* Amenities — visual card grid with modal expansion */}
       {venture.amenityGroups?.length ? (
-        <GroupedAmenities groups={venture.amenityGroups} />
+        <VisualAmenities groups={venture.amenityGroups} />
       ) : (
         venture.amenities?.length > 0 && <Amenities amenities={venture.amenities} />
       )}
 
-      {/* Specifications */}
+      {/* Specifications — Collapsible */}
       {venture.specifications?.length ? (
-        <Specifications groups={venture.specifications} />
+        <CollapsibleSpecifications groups={venture.specifications} />
       ) : null}
 
       {/* Floor plans */}

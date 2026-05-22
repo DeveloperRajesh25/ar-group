@@ -21,9 +21,9 @@ export function PageHero({
   size = 'md',
 }: PageHeroProps) {
   const heightClass =
-    size === 'sm' ? 'h-[48vh] min-h-[420px]' : size === 'lg' ? 'h-[75vh] min-h-[600px]' : 'h-[62vh] min-h-[520px]';
+    size === 'sm' ? 'h-[52vh] min-h-[500px]' : size === 'lg' ? 'h-[78vh] min-h-[680px]' : 'h-[66vh] min-h-[620px]';
   return (
-    <section className={`relative ${heightClass} overflow-hidden bg-navy-deep`}>
+    <section className={`relative ${heightClass} overflow-hidden bg-black`}>
       <div className="absolute inset-0">
         <Image
           src={image}
@@ -33,10 +33,9 @@ export function PageHero({
           sizes="100vw"
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-navy-deep/85 via-navy-deep/65 to-navy-deep/90" />
-        <div className="absolute inset-0 bg-navy-deep/25" />
+        <div className="absolute inset-0 bg-black/65" />
       </div>
-      <div className="relative container-base h-full flex items-end pt-32 md:pt-36 pb-16 md:pb-20">
+      <div className="relative container-base h-full flex items-end pt-40 md:pt-48 pb-14 md:pb-16">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}

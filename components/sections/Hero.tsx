@@ -14,7 +14,6 @@ import { useRef, useState, useCallback, MouseEvent } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 
 const HERO_BG = '/hero-bg.jpeg';
-const HERO_IMAGE = '/kamadhenu-infra-1/Gallery/cover.png';
 
 type Ripple = { id: number; x: number; y: number };
 
@@ -48,102 +47,49 @@ export function Hero() {
     <section
       ref={ref}
       onClick={handleClick}
-      className="relative min-h-screen w-full overflow-hidden bg-navy-deep cursor-default pt-28 md:pt-32 pb-16"
+      className="relative h-screen w-full overflow-hidden bg-navy-deep cursor-default"
     >
-      {/* === Background layer === */}
+      {/* === Background image === */}
       <motion.div
         style={{ y }}
         className="absolute inset-0 w-full h-[115%] -top-[7.5%]"
       >
-        <div className="absolute inset-0 animate-slow-zoom opacity-[0.18]">
-          <Image
-            src={HERO_BG}
-            alt=""
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover [filter:saturate(0.85)_contrast(1.05)]"
-          />
+        <div className="absolute inset-0 animate-slow-zoom">
+          <div className="absolute inset-0 scale-x-[-1]">
+            <Image
+              src={HERO_BG}
+              alt=""
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover [filter:saturate(1.05)_contrast(1.05)]"
+            />
+          </div>
         </div>
 
-        <div aria-hidden className="absolute inset-0 bg-navy-deep/65" />
-
-        <div aria-hidden className="absolute inset-0 overflow-hidden">
-          <motion.div
-            className="absolute -inset-1/2 will-change-transform mix-blend-screen"
-            animate={{
-              x: ['-10%', '12%', '-6%', '-10%'],
-              y: ['-8%', '10%', '12%', '-8%'],
-              scale: [1, 1.15, 0.95, 1],
-            }}
-            transition={{ duration: 14, ease: 'easeInOut', repeat: Infinity }}
-          >
-            <div
-              className="w-full h-full"
-              style={{
-                background:
-                  'radial-gradient(circle at 30% 35%, rgba(226, 201, 138, 0.4) 0%, rgba(226, 201, 138, 0) 55%)',
-              }}
-            />
-          </motion.div>
-
-          <motion.div
-            className="absolute -inset-1/2 will-change-transform mix-blend-screen"
-            animate={{
-              x: ['8%', '-12%', '6%', '8%'],
-              y: ['10%', '-8%', '-12%', '10%'],
-              scale: [1.05, 0.9, 1.18, 1.05],
-            }}
-            transition={{ duration: 18, ease: 'easeInOut', repeat: Infinity }}
-          >
-            <div
-              className="w-full h-full"
-              style={{
-                background:
-                  'radial-gradient(circle at 70% 60%, rgba(168, 137, 71, 0.45) 0%, rgba(168, 137, 71, 0) 55%)',
-              }}
-            />
-          </motion.div>
-
-          <motion.div
-            className="absolute -inset-1/2 will-change-transform mix-blend-soft-light"
-            animate={{
-              x: ['-4%', '6%', '-2%', '-4%'],
-              y: ['4%', '-6%', '4%', '4%'],
-              scale: [1.08, 0.96, 1.12, 1.08],
-            }}
-            transition={{ duration: 22, ease: 'easeInOut', repeat: Infinity }}
-          >
-            <div
-              className="w-full h-full"
-              style={{
-                background:
-                  'radial-gradient(circle at 50% 50%, rgba(40, 70, 100, 0.55) 0%, rgba(40, 70, 100, 0) 60%)',
-              }}
-            />
-          </motion.div>
-        </div>
-
-        <div
-          aria-hidden
-          className="absolute inset-0 opacity-[0.05] mix-blend-overlay pointer-events-none"
-          style={{
-            backgroundImage:
-              "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
-          }}
-        />
-
-        <div
-          aria-hidden
-          className="absolute inset-0 bg-gradient-to-b from-navy-deep/55 via-transparent to-navy-deep/80"
-        />
-
+        {/* Left-side black gradient — keeps text readable, fades to clean image on the right */}
         <div
           aria-hidden
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              'radial-gradient(ellipse at center, transparent 55%, rgba(20, 28, 50, 0.55) 100%)',
+              'linear-gradient(90deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.88) 18%, rgba(0,0,0,0.68) 38%, rgba(0,0,0,0.35) 58%, rgba(0,0,0,0.1) 75%)',
+          }}
+        />
+
+        {/* Soft bottom-edge fade to navy so the next section stitches in */}
+        <div
+          aria-hidden
+          className="absolute inset-x-0 bottom-0 h-40 pointer-events-none bg-gradient-to-t from-navy-deep/85 via-navy-deep/30 to-transparent"
+        />
+
+        {/* Subtle film-grain noise */}
+        <div
+          aria-hidden
+          className="absolute inset-0 opacity-[0.06] mix-blend-overlay pointer-events-none"
+          style={{
+            backgroundImage:
+              "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
           }}
         />
 
@@ -168,162 +114,107 @@ export function Hero() {
         </AnimatePresence>
       </motion.div>
 
-      {/* === Content — split layout === */}
+      {/* === Content === */}
       <motion.div
         style={{ opacity: contentOpacity, y: contentY }}
-        className="relative z-10 container-base h-full flex items-center"
+        className="relative z-10 container-base h-full flex items-center pt-24 md:pt-28"
       >
-        <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-          {/* Left — tagline */}
-          <div className="lg:col-span-7 text-left">
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.9, ease: [0.21, 0.47, 0.32, 0.98] }}
-              className="flex items-center gap-4"
-            >
-              <motion.span
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ delay: 0.5, duration: 1.1, ease: [0.21, 0.47, 0.32, 0.98] }}
-                className="block h-px w-10 bg-gold-soft origin-left"
-              />
-              <span className="text-gold-soft text-[11px] md:text-xs tracking-ultra uppercase font-inter font-medium">
-                AL Group
-              </span>
-            </motion.div>
-
-            <motion.h1
-              initial="hidden"
-              animate="visible"
-              variants={{
-                hidden: { opacity: 0 },
-                visible: {
-                  opacity: 1,
-                  transition: { staggerChildren: 0.07, delayChildren: 0.4 },
-                },
-              }}
-              className="mt-6 font-cormorant text-beige font-light tracking-display leading-[1.05] text-4xl sm:text-5xl md:text-6xl lg:text-[5.25rem] xl:text-[6rem]"
-            >
-              <span className="block overflow-hidden">
-                <motion.span
-                  variants={{
-                    hidden: { opacity: 0, y: '110%' },
-                    visible: {
-                      opacity: 1,
-                      y: 0,
-                      transition: { duration: 1.05, ease: [0.21, 0.47, 0.32, 0.98] },
-                    },
-                  }}
-                  className="inline-block"
-                >
-                  Your{' '}
-                  <em className="italic font-normal text-gold-soft">Family&apos;s</em>{' '}
-                  Trusted
-                </motion.span>
-              </span>
-              <span className="block overflow-hidden">
-                <motion.span
-                  variants={{
-                    hidden: { opacity: 0, y: '110%' },
-                    visible: {
-                      opacity: 1,
-                      y: 0,
-                      transition: { duration: 1.05, ease: [0.21, 0.47, 0.32, 0.98] },
-                    },
-                  }}
-                  className="inline-block"
-                >
-                  Real Estate Partner
-                </motion.span>
-              </span>
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.5, duration: 0.9 }}
-              className="mt-6 max-w-xl text-sm md:text-base leading-relaxed text-beige/75 font-inter font-light"
-            >
-              Premium ventures, RERA-approved investments, and a relationship-first
-              promise — across Andhra Pradesh.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.75, duration: 0.9 }}
-              className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4"
-            >
-              <PremiumButton href="/ventures" variant="primary">
-                Explore Ventures
-              </PremiumButton>
-              <PremiumButton href="/contact" variant="ghost">
-                Contact Us
-              </PremiumButton>
-            </motion.div>
-          </div>
-
-          {/* Right — venture showcase image */}
+        <div className="w-full max-w-2xl lg:max-w-3xl text-left">
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.8, duration: 1.1, ease: [0.21, 0.47, 0.32, 0.98] }}
-            className="lg:col-span-5 relative"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.9, ease: [0.21, 0.47, 0.32, 0.98] }}
+            className="flex items-center gap-4"
           >
-            <div className="relative aspect-[4/5] lg:aspect-[3/4] w-full overflow-hidden">
-              {/* Decorative gold frame */}
-              <div
-                aria-hidden
-                className="pointer-events-none absolute -top-3 -right-3 w-24 h-24 border-t border-r border-gold-soft/70"
-              />
-              <div
-                aria-hidden
-                className="pointer-events-none absolute -bottom-3 -left-3 w-24 h-24 border-b border-l border-gold-soft/70"
-              />
+            <motion.span
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ delay: 0.5, duration: 1.1, ease: [0.21, 0.47, 0.32, 0.98] }}
+              className="block h-px w-10 bg-gold-soft origin-left"
+            />
+            <span className="text-gold-soft text-[11px] md:text-xs tracking-ultra uppercase font-inter font-medium">
+              AL Group
+            </span>
+          </motion.div>
 
-              <Image
-                src={HERO_IMAGE}
-                alt="AL Group premium villa community"
-                fill
-                priority
-                sizes="(max-width: 1024px) 100vw, 40vw"
-                className="object-cover scale-x-[-1] [filter:saturate(1.05)_contrast(1.02)]"
-              />
+          <motion.h1
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: { staggerChildren: 0.07, delayChildren: 0.4 },
+              },
+            }}
+            className="mt-5 md:mt-6 font-cormorant text-beige font-light tracking-display leading-[1.02] text-[2.5rem] sm:text-5xl md:text-6xl lg:text-[5rem] xl:text-[5.75rem]"
+          >
+            <span className="block overflow-hidden">
+              <motion.span
+                variants={{
+                  hidden: { opacity: 0, y: '110%' },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    transition: { duration: 1.05, ease: [0.21, 0.47, 0.32, 0.98] },
+                  },
+                }}
+                className="inline-block"
+              >
+                Your{' '}
+                <em className="italic font-normal text-gold-soft">Family&apos;s</em>{' '}
+                Trusted
+              </motion.span>
+            </span>
+            <span className="block overflow-hidden">
+              <motion.span
+                variants={{
+                  hidden: { opacity: 0, y: '110%' },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    transition: { duration: 1.05, ease: [0.21, 0.47, 0.32, 0.98] },
+                  },
+                }}
+                className="inline-block"
+              >
+                Real Estate Partner
+              </motion.span>
+            </span>
+          </motion.h1>
 
-              <div
-                aria-hidden
-                className="absolute inset-0 bg-gradient-to-t from-navy-deep/55 via-transparent to-transparent"
-              />
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.5, duration: 0.9 }}
+            className="mt-5 md:mt-6 max-w-xl text-sm md:text-base leading-relaxed text-beige/80 font-inter font-light"
+          >
+            Premium ventures, RERA-approved investments, and a relationship-first
+            promise — across Andhra Pradesh.
+          </motion.p>
 
-              {/* Caption tag */}
-              <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-3">
-                <div>
-                  <p className="text-[9px] md:text-[10px] tracking-ultra uppercase text-gold-soft font-inter font-medium">
-                    Featured Venture
-                  </p>
-                  <p className="mt-1 font-cormorant text-beige text-xl md:text-2xl leading-tight">
-                    Kamadhenu Pearls
-                  </p>
-                </div>
-                <Link
-                  href="/ventures/kamadhenu-pearls"
-                  className="inline-flex items-center gap-1.5 text-[10px] tracking-widest uppercase text-beige hover:text-gold-soft transition-colors font-inter font-medium border-b border-gold-soft/60 pb-1"
-                >
-                  View
-                  <ArrowUpRight className="w-3 h-3" strokeWidth={1.5} />
-                </Link>
-              </div>
-            </div>
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.75, duration: 0.9 }}
+            className="mt-7 md:mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4"
+          >
+            <PremiumButton href="/ventures" variant="primary">
+              Explore Ventures
+            </PremiumButton>
+            <PremiumButton href="/contact" variant="ghost">
+              Contact Us
+            </PremiumButton>
           </motion.div>
         </div>
       </motion.div>
 
+      {/* Scroll indicator — bottom-left, out of the way of the visible image */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2.4, duration: 0.8 }}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-beige/60"
+        className="absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-beige/70"
       >
         <span className="text-[10px] tracking-ultra uppercase font-inter font-medium">
           Scroll

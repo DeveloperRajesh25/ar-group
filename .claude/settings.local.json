@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s http://localhost:3001)",
+      "Bash(curl -s http://localhost:3001/ventures/kamadhenu-pearls)",
+      "Bash(taskkill /F /FI \"WINDOWTITLE eq*next*\")",
+      "Bash(curl -s http://localhost:3003/ventures/kamadhenu-pearls)"
+    ]
+  }
+}
