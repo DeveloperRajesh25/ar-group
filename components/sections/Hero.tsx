@@ -13,16 +13,23 @@ import {
 import { useRef, useState, useCallback, MouseEvent } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 
-const HERO_BG = '/hero-bg.jpeg';
+const DEFAULT_HERO_BG = '/hero-bg.jpeg';
 
 type Ripple = { id: number; x: number; y: number };
 
-export function Hero() {
+export interface HeroProps {
+  /** Optional Sanity-managed background image. Falls back to /hero-bg.jpeg. */
+  backgroundImage?: string;
+}
+
+export function Hero({ backgroundImage }: HeroProps = {}) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 800], [0, 140]);
   const contentOpacity = useTransform(scrollY, [0, 500], [1, 0.25]);
   const contentY = useTransform(scrollY, [0, 500], [0, -40]);
+
+  const bgSrc = backgroundImage || DEFAULT_HERO_BG;
 
   const [ripples, setRipples] = useState<Ripple[]>([]);
   const rippleId = useRef(0);
@@ -57,7 +64,7 @@ export function Hero() {
         <div className="absolute inset-0 animate-slow-zoom">
           <div className="absolute inset-0 scale-x-[-1]">
             <Image
-              src={HERO_BG}
+              src={bgSrc}
               alt=""
               fill
               priority

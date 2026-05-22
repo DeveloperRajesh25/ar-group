@@ -14,7 +14,7 @@ import { PageHero } from '@/components/sections/PageHero';
 import { ContactForm } from '@/components/sections/ContactForm';
 import { FadeIn } from '@/components/ui/FadeIn';
 import { LocationMap } from '@/components/ventures/LocationMap';
-import { CONTACT, SOCIALS } from '@/lib/constants';
+import { getPageImages, getSiteSettings } from '@/lib/sanity/queries';
 import { telLink, mailLink, whatsappLink } from '@/lib/utils';
 
 export const metadata: Metadata = {
@@ -24,24 +24,28 @@ export const metadata: Metadata = {
   alternates: { canonical: '/contact' },
 };
 
-const HERO_IMG =
+export const revalidate = 3600;
+
+const FALLBACK_HERO_IMG =
   'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=2000&q=80';
 
-const socials = [
-  { href: SOCIALS.instagram, Icon: Instagram, label: 'Instagram' },
-  { href: SOCIALS.facebook, Icon: Facebook, label: 'Facebook' },
-  { href: SOCIALS.linkedin, Icon: Linkedin, label: 'LinkedIn' },
-  { href: SOCIALS.youtube, Icon: Youtube, label: 'YouTube' },
-];
+export default async function ContactPage() {
+  const [images, site] = await Promise.all([getPageImages(), getSiteSettings()]);
 
-export default function ContactPage() {
+  const socials = [
+    { href: site.socials.instagram, Icon: Instagram, label: 'Instagram' },
+    { href: site.socials.facebook, Icon: Facebook, label: 'Facebook' },
+    { href: site.socials.linkedin, Icon: Linkedin, label: 'LinkedIn' },
+    { href: site.socials.youtube, Icon: Youtube, label: 'YouTube' },
+  ].filter((s) => Boolean(s.href));
+
   return (
     <>
       <PageHero
         preHeading="Contact"
         title="Get in Touch"
         subtitle="We're here to help you discover trusted real estate opportunities across Andhra Pradesh."
-        image={HERO_IMG}
+        image={images.contactHeroBackground || FALLBACK_HERO_IMG}
         imageAlt="AL Group office and consultation"
         size="sm"
       />
@@ -72,7 +76,7 @@ export default function ContactPage() {
                   <p className="text-[11px] tracking-widest uppercase text-muted font-inter font-medium mb-1">
                     Visit Our Office
                   </p>
-                  <p className="text-base text-navy leading-relaxed">{CONTACT.address}</p>
+                  <p className="text-base text-navy leading-relaxed">{site.address}</p>
                 </div>
               </li>
               <li className="flex items-start gap-4">
@@ -83,7 +87,7 @@ export default function ContactPage() {
                   <p className="text-[11px] tracking-widest uppercase text-muted font-inter font-medium mb-1">
                     Working Hours
                   </p>
-                  <p className="text-base text-navy leading-relaxed">{CONTACT.workingHours}</p>
+                  <p className="text-base text-navy leading-relaxed">{site.workingHours}</p>
                 </div>
               </li>
               <li className="flex items-start gap-4">
@@ -95,10 +99,10 @@ export default function ContactPage() {
                     Call Us
                   </p>
                   <a
-                    href={telLink(CONTACT.phone)}
+                    href={telLink(site.phone)}
                     className="text-base text-navy hover:text-gold-deep transition-colors"
                   >
-                    {CONTACT.phone}
+                    {site.phone}
                   </a>
                 </div>
               </li>
@@ -111,10 +115,10 @@ export default function ContactPage() {
                     Email Us
                   </p>
                   <a
-                    href={mailLink(CONTACT.email)}
+                    href={mailLink(site.email)}
                     className="text-base text-navy hover:text-gold-deep transition-colors break-all"
                   >
-                    {CONTACT.email}
+                    {site.email}
                   </a>
                 </div>
               </li>
@@ -127,7 +131,10 @@ export default function ContactPage() {
                     WhatsApp
                   </p>
                   <a
-                    href={whatsappLink("Hi AL Group, I'd like to enquire about your real estate ventures.")}
+                    href={whatsappLink(
+                      "Hi AL Group, I'd like to enquire about your real estate ventures.",
+                      site.whatsappNumber,
+                    )}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-base text-navy hover:text-gold-deep transition-colors"
@@ -138,25 +145,27 @@ export default function ContactPage() {
               </li>
             </ul>
 
-            <div>
-              <p className="text-[11px] tracking-widest uppercase text-muted font-inter font-medium mb-4">
-                Follow Us
-              </p>
-              <div className="flex items-center gap-3">
-                {socials.map(({ href, Icon, label }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={label}
-                    className="flex items-center justify-center w-11 h-11 border border-line text-navy hover:bg-gold hover:border-gold hover:text-navy transition-all duration-400"
-                  >
-                    <Icon className="w-4 h-4" strokeWidth={1.5} />
-                  </a>
-                ))}
+            {socials.length > 0 && (
+              <div>
+                <p className="text-[11px] tracking-widest uppercase text-muted font-inter font-medium mb-4">
+                  Follow Us
+                </p>
+                <div className="flex items-center gap-3">
+                  {socials.map(({ href, Icon, label }) => (
+                    <a
+                      key={label}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={label}
+                      className="flex items-center justify-center w-11 h-11 border border-line text-navy hover:bg-gold hover:border-gold hover:text-navy transition-all duration-400"
+                    >
+                      <Icon className="w-4 h-4" strokeWidth={1.5} />
+                    </a>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
           </FadeIn>
 
           {/* Right — form */}
@@ -178,7 +187,7 @@ export default function ContactPage() {
       {/* Map */}
       <section className="py-0">
         <LocationMap
-          embedUrl={CONTACT.googleMapsEmbed}
+          embedUrl={site.googleMapsEmbed}
           ventureName="AL Group Office"
           height={500}
         />

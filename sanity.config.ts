@@ -3,7 +3,8 @@
 import { defineConfig } from 'sanity';
 import { structureTool } from 'sanity/structure';
 import { visionTool } from '@sanity/vision';
-import { schemaTypes } from './lib/sanity/schemas';
+import { schemaTypes, SINGLETON_TYPES } from './lib/sanity/schemas';
+import { structure } from './lib/sanity/structure';
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || '';
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production';
@@ -16,6 +17,20 @@ export default defineConfig({
   projectId,
   dataset,
   apiVersion,
-  plugins: [structureTool(), visionTool({ defaultApiVersion: apiVersion })],
-  schema: { types: schemaTypes },
+  plugins: [structureTool({ structure }), visionTool({ defaultApiVersion: apiVersion })],
+  schema: {
+    types: schemaTypes,
+    // Disable "Create new" for singleton types from the global UI.
+    templates: (templates) =>
+      templates.filter(({ schemaType }) => !SINGLETON_TYPES.has(schemaType)),
+  },
+  document: {
+    // Hide "duplicate" and "delete" actions on singletons so admins can't accidentally remove them.
+    actions: (input, context) => {
+      if (SINGLETON_TYPES.has(context.schemaType)) {
+        return input.filter(({ action }) => action !== 'duplicate' && action !== 'delete');
+      }
+      return input;
+    },
+  },
 });

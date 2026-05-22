@@ -4,10 +4,17 @@ import Link from 'next/link';
 import { FadeIn } from '@/components/ui/FadeIn';
 import { HIGHLIGHT_QUOTE } from '@/lib/data';
 
-const ABOUT_IMAGE =
+const DEFAULT_ABOUT_IMAGE =
   'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80';
 
-export function AboutPreview() {
+export interface AboutPreviewProps {
+  /** Optional Sanity-managed image override. */
+  image?: string;
+}
+
+export function AboutPreview({ image }: AboutPreviewProps = {}) {
+  const aboutImage = image || DEFAULT_ABOUT_IMAGE;
+
   return (
     <section className="section-padding bg-beige">
       <div className="container-base">
@@ -17,7 +24,7 @@ export function AboutPreview() {
             <div className="relative">
               <div className="relative aspect-[4/5] overflow-hidden img-hover">
                 <Image
-                  src={ABOUT_IMAGE}
+                  src={aboutImage}
                   alt="A premium real estate project promoted by AL Group"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"

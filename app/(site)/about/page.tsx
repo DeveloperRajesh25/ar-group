@@ -6,6 +6,7 @@ import { Approvals } from '@/components/sections/Approvals';
 import { CTASection } from '@/components/sections/CTASection';
 import { FadeIn } from '@/components/ui/FadeIn';
 import { ABOUT_PARAGRAPHS, HIGHLIGHT_QUOTE } from '@/lib/data';
+import { getPageImages, getSiteSettings } from '@/lib/sanity/queries';
 
 export const metadata: Metadata = {
   title: 'About AL Group | Real Estate Marketing in Andhra Pradesh',
@@ -14,19 +15,23 @@ export const metadata: Metadata = {
   alternates: { canonical: '/about' },
 };
 
-const HERO_IMG =
+export const revalidate = 3600;
+
+const FALLBACK_HERO_IMG =
   'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=2000&q=80';
-const STORY_IMG =
+const FALLBACK_STORY_IMG =
   'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1400&q=80';
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const [images, site] = await Promise.all([getPageImages(), getSiteSettings()]);
+
   return (
     <>
       <PageHero
         preHeading="Our Story"
         title="About AL Group"
         subtitle="Envision. Invest. Grow."
-        image={HERO_IMG}
+        image={images.aboutHeroBackground || FALLBACK_HERO_IMG}
         imageAlt="AL Group team and clients discussing a premium real estate venture"
         size="md"
       />
@@ -38,7 +43,7 @@ export default function AboutPage() {
             <div className="relative">
               <div className="relative aspect-[4/5] overflow-hidden img-hover">
                 <Image
-                  src={STORY_IMG}
+                  src={images.aboutStoryImage || FALLBACK_STORY_IMG}
                   alt="AL Group office consultation"
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
@@ -74,7 +79,7 @@ export default function AboutPage() {
 
       <WhyChooseUs />
       <Approvals expanded />
-      <CTASection />
+      <CTASection phone={site.phone} />
     </>
   );
 }

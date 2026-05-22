@@ -1,20 +1,24 @@
 import Link from 'next/link';
 import { Instagram, Facebook, Linkedin, Youtube, Mail, Phone, MapPin } from 'lucide-react';
 import { Logo } from './Logo';
-import { Divider } from '@/components/ui/Divider';
-import { CONTACT, NAV_LINKS, SITE, SOCIALS } from '@/lib/constants';
-import { VENTURES } from '@/lib/data';
+import { NAV_LINKS, SITE } from '@/lib/constants';
 import { telLink, mailLink } from '@/lib/utils';
+import type { SiteSettings } from '@/lib/sanity/queries';
 
-export function Footer() {
+export interface FooterProps {
+  siteSettings: SiteSettings;
+  ventures: Array<{ slug: string; name: string }>;
+}
+
+export function Footer({ siteSettings, ventures }: FooterProps) {
   const year = new Date().getFullYear();
 
   const socials = [
-    { href: SOCIALS.instagram, Icon: Instagram, label: 'Instagram' },
-    { href: SOCIALS.facebook, Icon: Facebook, label: 'Facebook' },
-    { href: SOCIALS.linkedin, Icon: Linkedin, label: 'LinkedIn' },
-    { href: SOCIALS.youtube, Icon: Youtube, label: 'YouTube' },
-  ];
+    { href: siteSettings.socials.instagram, Icon: Instagram, label: 'Instagram' },
+    { href: siteSettings.socials.facebook, Icon: Facebook, label: 'Facebook' },
+    { href: siteSettings.socials.linkedin, Icon: Linkedin, label: 'LinkedIn' },
+    { href: siteSettings.socials.youtube, Icon: Youtube, label: 'YouTube' },
+  ].filter((s) => Boolean(s.href));
 
   return (
     <footer className="bg-navy-deep text-beige relative overflow-hidden">
@@ -70,7 +74,7 @@ export function Footer() {
               Our Ventures
             </h4>
             <ul className="space-y-3">
-              {VENTURES.map((v) => (
+              {ventures.map((v) => (
                 <li key={v.slug}>
                   <Link
                     href={`/ventures/${v.slug}`}
@@ -91,22 +95,22 @@ export function Footer() {
             <ul className="space-y-4 text-sm text-beige/80">
               <li className="flex gap-3">
                 <MapPin className="w-4 h-4 mt-0.5 text-gold-soft shrink-0" strokeWidth={1.5} />
-                <span>{CONTACT.address}</span>
+                <span>{siteSettings.address}</span>
               </li>
               <li className="flex gap-3">
                 <Phone className="w-4 h-4 mt-0.5 text-gold-soft shrink-0" strokeWidth={1.5} />
-                <a href={telLink(CONTACT.phone)} className="hover:text-gold-soft transition-colors">
-                  {CONTACT.phone}
+                <a href={telLink(siteSettings.phone)} className="hover:text-gold-soft transition-colors">
+                  {siteSettings.phone}
                 </a>
               </li>
               <li className="flex gap-3">
                 <Mail className="w-4 h-4 mt-0.5 text-gold-soft shrink-0" strokeWidth={1.5} />
-                <a href={mailLink(CONTACT.email)} className="hover:text-gold-soft transition-colors">
-                  {CONTACT.email}
+                <a href={mailLink(siteSettings.email)} className="hover:text-gold-soft transition-colors">
+                  {siteSettings.email}
                 </a>
               </li>
               <li className="text-xs tracking-widest uppercase text-beige/60 pt-2">
-                {CONTACT.workingHours}
+                {siteSettings.workingHours}
               </li>
             </ul>
           </div>
@@ -116,7 +120,7 @@ export function Footer() {
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             <p className="text-xs text-beige/60">
-              © {year} {SITE.legalName}. All rights reserved.
+              © {year} {siteSettings.companyName || SITE.legalName}. All rights reserved.
             </p>
             <p className="text-xs tracking-widest uppercase text-gold-soft font-inter font-medium">
               {SITE.slogan}

@@ -7,16 +7,26 @@ import { Button } from '@/components/ui/Button';
 import { telLink } from '@/lib/utils';
 import { CONTACT } from '@/lib/constants';
 
-const CTA_IMAGE =
+const DEFAULT_CTA_IMAGE =
   'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=60';
 
-export function CTASection() {
+export interface CTASectionProps {
+  /** Optional Sanity-managed background image override. */
+  backgroundImage?: string;
+  /** Optional phone number from Site Settings (falls back to CONTACT.phone). */
+  phone?: string;
+}
+
+export function CTASection({ backgroundImage, phone }: CTASectionProps = {}) {
+  const bgImage = backgroundImage || DEFAULT_CTA_IMAGE;
+  const phoneNumber = phone || CONTACT.phone;
+
   return (
     <section className="relative bg-navy-deep text-beige overflow-hidden section-padding">
       {/* Subtle background image */}
       <div className="absolute inset-0 opacity-10" aria-hidden>
         <Image
-          src={CTA_IMAGE}
+          src={bgImage}
           alt=""
           fill
           sizes="100vw"
@@ -44,7 +54,7 @@ export function CTASection() {
             Connect with AL Group for premium plots, villas, and secure investment opportunities — backed by RERA, VMRDA, and CRDA approvals.
           </p>
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button href={telLink(CONTACT.phone)} variant="primary" size="md">
+            <Button href={telLink(phoneNumber)} variant="primary" size="md">
               <Phone className="w-3.5 h-3.5" strokeWidth={1.5} />
               Call Now
             </Button>

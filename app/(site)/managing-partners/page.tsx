@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { PageHero } from '@/components/sections/PageHero';
 import { CTASection } from '@/components/sections/CTASection';
 import { FadeIn } from '@/components/ui/FadeIn';
-import { getPartners } from '@/lib/sanity/queries';
+import { getPartners, getPageImages, getSiteSettings } from '@/lib/sanity/queries';
 
 export const metadata: Metadata = {
   title: 'Managing Partners | AL Group',
@@ -12,13 +12,17 @@ export const metadata: Metadata = {
   alternates: { canonical: '/managing-partners' },
 };
 
-const HERO_IMG =
+const FALLBACK_HERO_IMG =
   'https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=2000&q=80';
 
 export const revalidate = 3600;
 
 export default async function PartnersPage() {
-  const partners = await getPartners();
+  const [partners, images, site] = await Promise.all([
+    getPartners(),
+    getPageImages(),
+    getSiteSettings(),
+  ]);
 
   return (
     <>
@@ -26,7 +30,7 @@ export default async function PartnersPage() {
         preHeading="Leadership"
         title="Managing Partners"
         subtitle="The vision and leadership guiding AL Group."
-        image={HERO_IMG}
+        image={images.partnersHeroBackground || FALLBACK_HERO_IMG}
         imageAlt="AL Group managing partners"
         size="md"
       />
@@ -95,7 +99,7 @@ export default async function PartnersPage() {
         </div>
       </section>
 
-      <CTASection />
+      <CTASection phone={site.phone} />
     </>
   );
 }

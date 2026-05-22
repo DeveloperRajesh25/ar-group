@@ -5,7 +5,7 @@ import { ArrowRight, MapPin, Home, Calendar, FileCheck } from 'lucide-react';
 import { PageHero } from '@/components/sections/PageHero';
 import { FadeIn } from '@/components/ui/FadeIn';
 import { CTASection } from '@/components/sections/CTASection';
-import { getVentures } from '@/lib/sanity/queries';
+import { getVentures, getPageImages, getSiteSettings } from '@/lib/sanity/queries';
 import { cn } from '@/lib/utils';
 
 export const metadata: Metadata = {
@@ -23,13 +23,17 @@ export const metadata: Metadata = {
   alternates: { canonical: '/ventures' },
 };
 
-const HERO_IMG =
+const FALLBACK_HERO_IMG =
   'https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?auto=format&fit=crop&w=2000&q=80';
 
 export const revalidate = 3600;
 
 export default async function VenturesPage() {
-  const ventures = await getVentures();
+  const [ventures, images, site] = await Promise.all([
+    getVentures(),
+    getPageImages(),
+    getSiteSettings(),
+  ]);
 
   return (
     <>
@@ -37,7 +41,7 @@ export default async function VenturesPage() {
         preHeading="Our Ventures"
         title="Premium Real Estate Opportunities"
         subtitle="Hand-picked investment opportunities across Andhra Pradesh — every venture legally cleared, premium in finish, built for long-term value."
-        image={HERO_IMG}
+        image={images.venturesHeroBackground || FALLBACK_HERO_IMG}
         imageAlt="Premium real estate venture portfolio"
         size="md"
       />
@@ -143,7 +147,7 @@ export default async function VenturesPage() {
         </div>
       </section>
 
-      <CTASection />
+      <CTASection phone={site.phone} />
     </>
   );
 }
