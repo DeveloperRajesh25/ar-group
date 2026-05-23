@@ -103,34 +103,29 @@ export default async function VenturePage({
           <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black/85" />
         </div>
         <div className="relative container-base h-full flex flex-col justify-end pb-16 md:pb-20">
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
-            <div className="max-w-3xl">
-              <span className="inline-block px-3 py-1.5 bg-gold text-navy text-[10px] tracking-ultra uppercase font-inter font-medium mb-6">
-                {venture.status}
-              </span>
-              <h1 className="font-cormorant text-beige font-light tracking-display leading-[1.05] text-5xl md:text-6xl lg:text-7xl">
-                {venture.name}
-              </h1>
-              <p className="mt-5 text-base md:text-lg leading-relaxed text-beige/80 max-w-2xl">
-                {venture.tagline}
-              </p>
-              <p className="mt-4 text-[11px] tracking-widest uppercase text-gold-soft font-inter font-medium flex items-center gap-1.5">
-                <MapPin className="w-3 h-3" strokeWidth={1.5} />
-                {venture.location}
-              </p>
-            </div>
-            {venture.brochurePdf && (
-              <a
-                href={venture.brochurePdf}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-7 py-4 bg-gold text-navy text-xs tracking-widest uppercase hover:bg-gold-deep transition-colors duration-400 font-inter font-medium self-start"
-              >
-                <Download className="w-4 h-4" strokeWidth={1.5} />
-                View Brochure
-              </a>
-            )}
+          <div className="max-w-3xl">
+            <h1 className="font-cormorant text-beige font-light tracking-display leading-[1.05] text-5xl md:text-6xl lg:text-7xl">
+              {venture.name}
+            </h1>
+            <p className="mt-5 text-base md:text-lg leading-relaxed text-beige/80 max-w-2xl">
+              {venture.tagline}
+            </p>
+            <p className="mt-4 text-[11px] tracking-widest uppercase text-gold-soft font-inter font-medium flex items-center gap-1.5">
+              <MapPin className="w-3 h-3" strokeWidth={1.5} />
+              {venture.location}
+            </p>
           </div>
+          {venture.brochurePdf && (
+            <a
+              href={venture.brochurePdf}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="absolute bottom-16 md:bottom-20 right-4 sm:right-6 md:right-8 lg:right-12 inline-flex items-center gap-2 px-7 py-4 bg-gold text-navy text-xs tracking-widest uppercase hover:bg-gold-deep transition-colors duration-400 font-inter font-medium"
+            >
+              <Download className="w-4 h-4" strokeWidth={1.5} />
+              View Brochure
+            </a>
+          )}
         </div>
       </section>
 

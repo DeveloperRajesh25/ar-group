@@ -521,13 +521,37 @@ export const VENTURES: Venture[] = [
     ],
     amenityGroups: [
       {
-        title: 'The Makings of a Worthy Life',
+        title: 'Lifestyle & Living',
+        image: '/sreedevi_s%20srinivasam/gallery.png',
         items: [
           'Class-apart Entertainment',
-          'Futuristically Infrastructure',
+          "Children's Park",
+          'Avenue Plantation',
+          'Beautiful Entrance Gate with Arch',
+          'Elegant Street Lights',
+        ],
+      },
+      {
+        title: 'Infrastructure & Connectivity',
+        image: '/sreedevi_s%20srinivasam/layout%20gallery.png',
+        items: [
+          'Futuristic Infrastructure',
+          '40 & 30 Ft. Internal BT Roads',
+          'Footpath with KERB Stones',
+          'UGD & Underground Water Supply',
+          'Electricity',
+        ],
+      },
+      {
+        title: 'Security & Sustainability',
+        image: '/sreedevi_s%20srinivasam/pages/page-01.jpg',
+        items: [
           'Assuredly Secured',
+          'All-Around Compound Wall',
           'Sourcefully Sustainable',
-          'Self-sufficiency to Count on',
+          'Water Harvesting',
+          '100% Vaastu Compliant',
+          'Clear Title & Bank Loan Facility',
         ],
       },
     ],
