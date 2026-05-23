@@ -47,11 +47,11 @@ export function Navbar() {
             : 'bg-transparent'
         )}
       >
-        <div className="container-base flex items-center justify-between py-5 md:py-6">
+        <div className="container-base flex items-center py-3 md:py-4">
           <Logo size="md" />
 
           {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-10" aria-label="Primary">
+          <nav className="hidden lg:flex items-center gap-7 ml-auto" aria-label="Primary">
             {NAV_LINKS.map((link) => {
               const active =
                 link.href === '/'
@@ -82,7 +82,7 @@ export function Navbar() {
           </nav>
 
           {/* Right side */}
-          <div className="flex items-center gap-4 md:gap-6">
+          <div className="flex items-center gap-3 md:gap-4 ml-auto lg:ml-8">
             <a
               href={telLink(CONTACT.phone)}
               className={cn(

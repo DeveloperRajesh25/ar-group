@@ -43,7 +43,22 @@ export const FORM_IDS = {
 };
 
 export const APPROVALS = [
-  { name: 'RERA Approved', short: 'RERA', description: 'Real Estate Regulatory Authority' },
-  { name: 'VMRDA Approved', short: 'VMRDA', description: 'Visakhapatnam Metropolitan Region Development Authority' },
-  { name: 'CRDA Approved', short: 'CRDA', description: 'Capital Region Development Authority' },
+  {
+    name: 'RERA Approved',
+    short: 'RERA',
+    description: 'Real Estate Regulatory Authority',
+    logo: '/logos/approvals/ap_rera.png',
+  },
+  {
+    name: 'VMRDA Approved',
+    short: 'VMRDA',
+    description: 'Visakhapatnam Metropolitan Region Development Authority',
+    logo: '/logos/approvals/vmrda.png',
+  },
+  {
+    name: 'APCRDA Approved',
+    short: 'APCRDA',
+    description: 'Andhra Pradesh Capital Region Development Authority',
+    logo: '/logos/approvals/apcrda.png',
+  },
 ];
