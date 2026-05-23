@@ -35,27 +35,27 @@ export function PageHero({
         />
         <div className="absolute inset-0 bg-black/65" />
       </div>
-      <div className="relative container-base h-full flex items-end pt-40 md:pt-48 pb-14 md:pb-16">
+      <div className="relative container-base h-full flex items-end pt-32 md:pt-48 pb-12 md:pb-16">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] }}
-          className="max-w-3xl"
+          className="max-w-3xl w-full"
         >
           {preHeading && (
-            <p className="text-gold-soft text-xs tracking-ultra uppercase font-inter font-medium mb-5">
+            <p className="text-gold-soft text-[11px] sm:text-xs tracking-[0.25em] sm:tracking-ultra uppercase font-inter font-medium mb-4 md:mb-5">
               — {preHeading}
             </p>
           )}
-          <h1 className="font-cormorant text-beige font-light tracking-display leading-[1.05] text-5xl md:text-6xl lg:text-7xl">
+          <h1 className="font-cormorant text-beige font-light tracking-tight md:tracking-display leading-[1.05] text-[2.25rem] sm:text-5xl md:text-6xl lg:text-7xl break-words">
             {title}
           </h1>
           {subtitle && (
-            <p className="mt-6 text-base md:text-lg leading-relaxed text-beige/80 max-w-xl">
+            <p className="mt-5 md:mt-6 text-sm sm:text-base md:text-lg leading-relaxed text-beige/80 max-w-xl">
               {subtitle}
             </p>
           )}
-          <div className="w-16 h-px bg-gold-soft mt-8" />
+          <div className="w-12 md:w-16 h-px bg-gold-soft mt-6 md:mt-8" />
         </motion.div>
       </div>
     </section>

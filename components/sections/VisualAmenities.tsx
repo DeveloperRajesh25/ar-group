@@ -23,7 +23,7 @@ export function VisualAmenities({ groups }: VisualAmenitiesProps) {
           <p className="text-gold text-xs tracking-ultra uppercase font-inter font-medium mb-4">
             — Lifestyle
           </p>
-          <h2 className="font-cormorant text-4xl md:text-5xl font-light text-navy tracking-display">
+          <h2 className="font-cormorant text-[2rem] sm:text-3xl md:text-5xl font-light text-navy tracking-display">
             World-Class <em className="italic font-normal">Amenities</em>
           </h2>
           <p className="mt-6 text-base md:text-lg leading-relaxed text-muted max-w-2xl mx-auto">
@@ -161,13 +161,13 @@ export function VisualAmenities({ groups }: VisualAmenitiesProps) {
                     <p className="text-gold-soft text-xs tracking-ultra uppercase font-inter font-medium mb-3">
                       Zone {selectedIdx + 1}
                     </p>
-                    <h2 className="font-cormorant text-4xl md:text-5xl font-light text-beige tracking-display mb-8">
+                    <h2 className="font-cormorant text-[1.75rem] sm:text-3xl md:text-5xl font-light text-beige tracking-display mb-6 md:mb-8">
                       {groups[selectedIdx].title}
                     </h2>
 
                     <div className="w-12 h-px bg-gold mb-8" />
 
-                    <div className="grid grid-cols-2 gap-x-6 gap-y-4 max-h-[400px] overflow-y-auto pr-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 sm:gap-y-4 max-h-[400px] overflow-y-auto pr-2 sm:pr-4">
                       {groups[selectedIdx].items.map((item, i) => (
                         <motion.div
                           key={item + i}

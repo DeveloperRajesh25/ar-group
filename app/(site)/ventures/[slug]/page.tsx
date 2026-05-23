@@ -102,15 +102,15 @@ export default async function VenturePage({
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-black/85" />
         </div>
-        <div className="relative container-base h-full flex flex-col justify-end pb-16 md:pb-20">
+        <div className="relative container-base h-full flex flex-col justify-end pb-12 md:pb-20">
           <div className="max-w-3xl">
-            <h1 className="font-cormorant text-beige font-light tracking-display leading-[1.05] text-5xl md:text-6xl lg:text-7xl">
+            <h1 className="font-cormorant text-beige font-light tracking-tight md:tracking-display leading-[1.05] text-[2.25rem] sm:text-5xl md:text-6xl lg:text-7xl break-words">
               {venture.name}
             </h1>
-            <p className="mt-5 text-base md:text-lg leading-relaxed text-beige/80 max-w-2xl">
+            <p className="mt-4 md:mt-5 text-sm sm:text-base md:text-lg leading-relaxed text-beige/80 max-w-2xl">
               {venture.tagline}
             </p>
-            <p className="mt-4 text-[11px] tracking-widest uppercase text-gold-soft font-inter font-medium flex items-center gap-1.5">
+            <p className="mt-3 md:mt-4 text-[11px] tracking-widest uppercase text-gold-soft font-inter font-medium flex items-center gap-1.5">
               <MapPin className="w-3 h-3" strokeWidth={1.5} />
               {venture.location}
             </p>
@@ -120,9 +120,20 @@ export default async function VenturePage({
               href={venture.brochurePdf}
               target="_blank"
               rel="noopener noreferrer"
-              className="absolute bottom-16 md:bottom-20 right-4 sm:right-6 md:right-8 lg:right-12 inline-flex items-center gap-2 px-7 py-4 bg-gold text-navy text-xs tracking-widest uppercase hover:bg-gold-deep transition-colors duration-400 font-inter font-medium"
+              className="hidden md:inline-flex absolute bottom-20 right-8 lg:right-12 items-center gap-2 px-7 py-4 bg-gold text-navy text-xs tracking-widest uppercase hover:bg-gold-deep transition-colors duration-400 font-inter font-medium"
             >
               <Download className="w-4 h-4" strokeWidth={1.5} />
+              View Brochure
+            </a>
+          )}
+          {venture.brochurePdf && (
+            <a
+              href={venture.brochurePdf}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="md:hidden mt-6 inline-flex self-start items-center gap-2 px-5 py-3 bg-gold text-navy text-[11px] tracking-widest uppercase hover:bg-gold-deep transition-colors duration-400 font-inter font-medium"
+            >
+              <Download className="w-3.5 h-3.5" strokeWidth={1.5} />
               View Brochure
             </a>
           )}
@@ -155,7 +166,7 @@ export default async function VenturePage({
             <p className="text-gold text-xs tracking-ultra uppercase font-inter font-medium mb-5">
               — Overview
             </p>
-            <h2 className="font-cormorant text-4xl md:text-5xl font-light text-navy leading-[1.1] tracking-display">
+            <h2 className="font-cormorant text-[2rem] sm:text-3xl md:text-5xl font-light text-navy leading-[1.1] tracking-display">
               About <em className="italic font-normal text-gold-deep">{venture.name}</em>
             </h2>
             <div className="w-16 h-px bg-gold mt-8" />
@@ -191,7 +202,7 @@ export default async function VenturePage({
               <p className="text-gold text-xs tracking-ultra uppercase font-inter font-medium mb-4">
                 — Floor Plans
               </p>
-              <h2 className="font-cormorant text-4xl md:text-5xl font-light text-navy tracking-display">
+              <h2 className="font-cormorant text-[2rem] sm:text-3xl md:text-5xl font-light text-navy tracking-display">
                 Floor Plans & <em className="italic font-normal">Layouts</em>
               </h2>
               <div className="w-16 h-px bg-gold mx-auto mt-8" />
@@ -213,7 +224,7 @@ export default async function VenturePage({
               <p className="text-gold text-xs tracking-ultra uppercase font-inter font-medium mb-4">
                 — Gallery
               </p>
-              <h2 className="font-cormorant text-4xl md:text-5xl font-light text-navy tracking-display">
+              <h2 className="font-cormorant text-[2rem] sm:text-3xl md:text-5xl font-light text-navy tracking-display">
                 Inside <em className="italic font-normal">{venture.name}</em>
               </h2>
               <div className="w-16 h-px bg-gold mx-auto mt-8" />
@@ -237,7 +248,7 @@ export default async function VenturePage({
             <p className="text-gold text-xs tracking-ultra uppercase font-inter font-medium mb-5">
               — Location
             </p>
-            <h2 className="font-cormorant text-3xl md:text-4xl lg:text-5xl font-light text-navy leading-[1.1] tracking-display">
+            <h2 className="font-cormorant text-[1.75rem] sm:text-3xl md:text-4xl lg:text-5xl font-light text-navy leading-[1.1] tracking-display">
               Connected. <em className="italic font-normal text-gold-deep">Convenient.</em>
             </h2>
             <p className="mt-4 text-base text-muted leading-relaxed">
@@ -265,7 +276,7 @@ export default async function VenturePage({
             <p className="text-gold text-xs tracking-ultra uppercase font-inter font-medium mb-4">
               — Brochure
             </p>
-            <h2 className="font-cormorant text-4xl md:text-5xl font-light text-navy tracking-display">
+            <h2 className="font-cormorant text-[2rem] sm:text-3xl md:text-5xl font-light text-navy tracking-display">
               Get The Full <em className="italic font-normal">Brochure</em>
             </h2>
             <p className="mt-5 text-base md:text-lg text-muted leading-relaxed">
@@ -292,7 +303,7 @@ export default async function VenturePage({
             <p className="text-gold-soft text-xs tracking-ultra uppercase font-inter font-medium mb-5">
               — Visit Us
             </p>
-            <h2 className="font-cormorant text-4xl md:text-5xl lg:text-6xl font-light text-beige leading-[1.1] tracking-display">
+            <h2 className="font-cormorant text-[2rem] sm:text-3xl md:text-5xl lg:text-6xl font-light text-beige leading-[1.1] tracking-display">
               Book a <em className="italic font-normal text-gold-soft">Site Visit</em>
             </h2>
             <p className="mt-6 text-base md:text-lg leading-relaxed text-beige/80 max-w-md">

@@ -154,7 +154,7 @@ export function Navbar() {
                 >
                   <Link
                     href={link.href}
-                    className="block py-3 font-cormorant text-4xl md:text-5xl font-light text-navy border-b border-line/60 hover:text-gold-deep transition-colors"
+                    className="block py-3 font-cormorant text-3xl sm:text-4xl md:text-5xl font-light text-navy border-b border-line/60 hover:text-gold-deep transition-colors"
                   >
                     {link.label}
                   </Link>

@@ -36,7 +36,7 @@ export function Amenities({
           subtitle="Thoughtfully curated to elevate everyday living — for every member of the family."
         />
 
-        <div className="mt-16 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-6 gap-y-10">
+        <div className="mt-10 md:mt-16 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-3 sm:gap-x-6 gap-y-8 md:gap-y-10">
           {amenities.map((a, i) => {
             const Icon =
               (Icons[a.icon as keyof typeof Icons] as LucideIcon) ?? Icons.Sparkles;
@@ -53,13 +53,13 @@ export function Amenities({
                 }}
                 className="flex flex-col items-center text-center group"
               >
-                <div className="flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full border border-gold/50 bg-beige-soft transition-all duration-400 group-hover:bg-gold group-hover:border-gold">
+                <div className="flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-full border border-gold/50 bg-beige-soft transition-all duration-400 group-hover:bg-gold group-hover:border-gold">
                   <Icon
-                    className="w-6 h-6 md:w-7 md:h-7 text-gold-deep group-hover:text-navy transition-colors duration-400"
+                    className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 text-gold-deep group-hover:text-navy transition-colors duration-400"
                     strokeWidth={1.3}
                   />
                 </div>
-                <p className="mt-4 font-cormorant text-lg md:text-xl text-navy">{a.name}</p>
+                <p className="mt-3 md:mt-4 font-cormorant text-base sm:text-lg md:text-xl text-navy leading-tight">{a.name}</p>
               </motion.div>
             );
           })}

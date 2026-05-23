@@ -74,7 +74,7 @@ export default async function PartnersPage() {
                   <span className="inline-block px-3 py-1.5 border border-gold text-gold-deep text-[10px] tracking-ultra uppercase font-inter font-medium">
                     {partner.designation}
                   </span>
-                  <h2 className="mt-6 font-cormorant text-4xl md:text-5xl lg:text-6xl font-light text-navy leading-[1.1] tracking-display">
+                  <h2 className="mt-6 font-cormorant text-[2rem] sm:text-3xl md:text-5xl lg:text-6xl font-light text-navy leading-[1.1] tracking-display">
                     {partner.name}
                   </h2>
                   <div className="mt-8 space-y-6 text-base md:text-lg leading-relaxed text-muted max-w-xl">
@@ -87,7 +87,7 @@ export default async function PartnersPage() {
                       <p className="text-[11px] tracking-ultra uppercase text-gold-deep font-inter font-medium mb-3">
                         {partner.visionOrMission.label}
                       </p>
-                      <p className="font-cormorant italic text-xl md:text-2xl text-navy leading-relaxed">
+                      <p className="font-cormorant italic text-lg sm:text-xl md:text-2xl text-navy leading-relaxed">
                         &ldquo;{partner.visionOrMission.content}&rdquo;
                       </p>
                     </div>

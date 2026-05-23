@@ -154,7 +154,7 @@ export function Hero({ backgroundImage }: HeroProps = {}) {
                 transition: { staggerChildren: 0.07, delayChildren: 0.4 },
               },
             }}
-            className="mt-5 md:mt-6 font-cormorant text-beige font-light tracking-display leading-[1.02] text-[2.5rem] sm:text-5xl md:text-6xl lg:text-[5rem] xl:text-[5.75rem]"
+            className="mt-5 md:mt-6 font-cormorant text-beige font-light tracking-tight md:tracking-display leading-[1.05] md:leading-[1.02] text-[2.25rem] sm:text-[2.75rem] md:text-6xl lg:text-[5rem] xl:text-[5.75rem]"
           >
             <span className="block overflow-hidden">
               <motion.span

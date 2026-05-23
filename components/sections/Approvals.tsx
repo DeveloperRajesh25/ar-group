@@ -17,7 +17,7 @@ export function Approvals({ expanded = false }: ApprovalsProps) {
             <p className="text-gold text-xs tracking-ultra uppercase font-inter font-medium mb-4">
               — Recognised & Approved
             </p>
-            <h2 className="font-cormorant text-4xl md:text-5xl font-light text-navy tracking-display">
+            <h2 className="font-cormorant text-[2rem] sm:text-3xl md:text-5xl font-light text-navy tracking-display">
               Every Project. <em className="italic font-normal">Legally Cleared.</em>
             </h2>
             <div className="w-16 h-px bg-gold mx-auto mt-8" />
@@ -30,7 +30,7 @@ export function Approvals({ expanded = false }: ApprovalsProps) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.7 }}
-                className="bg-beige-soft border border-line/60 p-10 text-center hover:border-gold transition-colors duration-400"
+                className="bg-beige-soft border border-line/60 p-6 sm:p-8 md:p-10 text-center hover:border-gold transition-colors duration-400"
               >
                 <div className="relative h-20 mx-auto mb-6 flex items-center justify-center">
                   <Image
@@ -63,10 +63,10 @@ export function Approvals({ expanded = false }: ApprovalsProps) {
         <p className="text-gold text-[11px] tracking-ultra uppercase font-inter font-medium mb-3 text-center">
           — Recognised & Approved
         </p>
-        <h2 className="font-cormorant text-2xl md:text-3xl text-navy text-center font-light tracking-display mb-8">
+        <h2 className="font-cormorant text-xl sm:text-2xl md:text-3xl text-navy text-center font-light tracking-display mb-6 md:mb-8">
           Every Project. <em className="italic font-normal">Legally Cleared.</em>
         </h2>
-        <div className="flex flex-row md:flex-row items-center justify-center gap-8 md:gap-16">
+        <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 md:gap-16">
           {APPROVALS.map((a, i) => (
             <motion.div
               key={a.short}

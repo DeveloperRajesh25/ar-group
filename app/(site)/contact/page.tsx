@@ -58,7 +58,7 @@ export default async function ContactPage() {
               <p className="text-gold text-xs tracking-ultra uppercase font-inter font-medium mb-4">
                 — Reach Us
               </p>
-              <h2 className="font-cormorant text-4xl md:text-5xl font-light text-navy leading-tight tracking-display">
+              <h2 className="font-cormorant text-[2rem] sm:text-3xl md:text-5xl font-light text-navy leading-[1.1] tracking-display">
                 Let&apos;s Start a{' '}
                 <em className="italic font-normal text-gold-deep">Conversation</em>
               </h2>
@@ -170,8 +170,8 @@ export default async function ContactPage() {
 
           {/* Right — form */}
           <FadeIn direction="left" className="lg:col-span-7">
-            <div className="bg-beige-soft border border-line/60 p-8 md:p-12">
-              <h3 className="font-cormorant text-3xl md:text-4xl font-light text-navy tracking-display">
+            <div className="bg-beige-soft border border-line/60 p-5 sm:p-8 md:p-12">
+              <h3 className="font-cormorant text-2xl sm:text-3xl md:text-4xl font-light text-navy tracking-display">
                 Send Us an <em className="italic font-normal text-gold-deep">Inquiry</em>
               </h3>
               <p className="mt-3 text-sm text-muted leading-relaxed">

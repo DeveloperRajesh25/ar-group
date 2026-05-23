@@ -39,7 +39,7 @@ export function CollapsibleFeatures({ features }: CollapsibleFeaturesProps) {
           <p className="text-gold text-xs tracking-ultra uppercase font-inter font-medium mb-4">
             — Features
           </p>
-          <h2 className="font-cormorant text-4xl md:text-5xl font-light text-navy tracking-display">
+          <h2 className="font-cormorant text-[2rem] sm:text-3xl md:text-5xl font-light text-navy tracking-display">
             Premium <em className="italic font-normal">Features</em>
           </h2>
           <div className="w-16 h-px bg-gold mx-auto mt-8" />

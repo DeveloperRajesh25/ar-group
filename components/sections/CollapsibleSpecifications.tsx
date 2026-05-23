@@ -42,7 +42,7 @@ export function CollapsibleSpecifications({
           <p className="text-gold text-xs tracking-ultra uppercase font-inter font-medium mb-4">
             — Specifications
           </p>
-          <h2 className="font-cormorant text-4xl md:text-5xl font-light text-navy tracking-display">
+          <h2 className="font-cormorant text-[2rem] sm:text-3xl md:text-5xl font-light text-navy tracking-display">
             Built to <em className="italic font-normal">Last</em>
           </h2>
           <div className="w-16 h-px bg-gold mx-auto mt-8" />

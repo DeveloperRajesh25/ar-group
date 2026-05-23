@@ -35,7 +35,7 @@ export function VentureGallery({ images, ventureName }: { images: string[]; vent
 
   return (
     <>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3 md:gap-4">
         {images.map((src, i) => (
           <button
             key={src + i}

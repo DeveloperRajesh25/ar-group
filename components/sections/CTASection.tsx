@@ -46,7 +46,7 @@ export function CTASection({ backgroundImage, phone }: CTASectionProps = {}) {
           <p className="text-gold-soft text-xs tracking-ultra uppercase font-inter font-medium mb-6">
             — Start Today
           </p>
-          <h2 className="font-cormorant text-4xl md:text-5xl lg:text-6xl font-light text-beige leading-[1.1] tracking-display">
+          <h2 className="font-cormorant text-[2rem] sm:text-3xl md:text-5xl lg:text-6xl font-light text-beige leading-[1.1] tracking-display">
             Start Your Real Estate{' '}
             <em className="italic font-normal text-gold-soft">Investment</em> Journey
           </h2>

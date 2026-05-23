@@ -47,7 +47,7 @@ export function SectionHeading({
       )}
       <h2
         className={cn(
-          'font-cormorant text-4xl md:text-5xl lg:text-6xl font-light leading-tight tracking-display',
+          'font-cormorant text-[2rem] sm:text-3xl md:text-5xl lg:text-6xl font-light leading-[1.1] tracking-display',
           invert ? 'text-beige' : 'text-navy'
         )}
       >

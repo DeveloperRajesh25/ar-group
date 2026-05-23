@@ -107,7 +107,7 @@ export default async function VenturesPage() {
                           <MapPin className="w-3 h-3" strokeWidth={1.5} />
                           {v.location}
                         </p>
-                        <h2 className="font-cormorant text-4xl md:text-5xl font-light text-navy leading-tight tracking-display">
+                        <h2 className="font-cormorant text-[1.75rem] sm:text-3xl md:text-5xl font-light text-navy leading-tight tracking-display">
                           {v.name}
                         </h2>
                         <p className="text-base md:text-lg text-muted leading-relaxed">

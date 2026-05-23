@@ -61,7 +61,7 @@ export default async function AboutPage() {
             <p className="text-gold text-xs tracking-ultra uppercase font-inter font-medium mb-5">
               — Who We Are
             </p>
-            <h2 className="font-cormorant text-4xl md:text-5xl lg:text-6xl font-light text-navy leading-[1.1] tracking-display">
+            <h2 className="font-cormorant text-[2rem] sm:text-3xl md:text-5xl lg:text-6xl font-light text-navy leading-[1.1] tracking-display">
               A Relationship-First{' '}
               <em className="italic font-normal text-gold-deep">Real Estate</em> Company
             </h2>

@@ -67,7 +67,7 @@ export function CollapsibleGroupedAmenities({
           <p className="text-gold text-xs tracking-ultra uppercase font-inter font-medium mb-4">
             — Lifestyle
           </p>
-          <h2 className="font-cormorant text-4xl md:text-5xl font-light text-navy tracking-display">
+          <h2 className="font-cormorant text-[2rem] sm:text-3xl md:text-5xl font-light text-navy tracking-display">
             World-Class <em className="italic font-normal">Amenities</em>
           </h2>
           <p className="mt-6 text-base md:text-lg leading-relaxed text-muted max-w-2xl mx-auto">
