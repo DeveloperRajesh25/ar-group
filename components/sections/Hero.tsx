@@ -13,7 +13,7 @@ import {
 import { useRef, useState, useCallback, MouseEvent } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 
-const DEFAULT_HERO_BG = '/hero-bg.jpeg';
+const DEFAULT_HERO_BG = '/hero-2.png';
 
 type Ripple = { id: number; x: number; y: number };
 
@@ -62,16 +62,14 @@ export function Hero({ backgroundImage }: HeroProps = {}) {
         className="absolute inset-0 w-full h-[115%] -top-[7.5%]"
       >
         <div className="absolute inset-0 animate-slow-zoom">
-          <div className="absolute inset-0 scale-x-[-1]">
-            <Image
-              src={bgSrc}
-              alt=""
-              fill
-              priority
-              sizes="100vw"
-              className="object-cover [filter:saturate(1.05)_contrast(1.05)]"
-            />
-          </div>
+          <Image
+            src={bgSrc}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover [filter:saturate(1.05)_contrast(1.05)]"
+          />
         </div>
 
         {/* Left-side black gradient — keeps text readable, fades to clean image on the right */}
