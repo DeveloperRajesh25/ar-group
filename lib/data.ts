@@ -89,6 +89,11 @@ export const VENTURES: Venture[] = [
       '/kamadhenu%20pearls%20_final%20draft_/Gallery/1.png',
       '/kamadhenu%20pearls%20_final%20draft_/Gallery/2.png',
       '/kamadhenu%20pearls%20_final%20draft_/Gallery/4.png',
+      '/kamadhenu%20pearls%20_final%20draft_/Gallery/5.png',
+      '/kamadhenu%20pearls%20_final%20draft_/Gallery/6.png',
+      '/kamadhenu%20pearls%20_final%20draft_/Gallery/7.png',
+      '/kamadhenu%20pearls%20_final%20draft_/Gallery/8.png',
+      '/kamadhenu%20pearls%20_final%20draft_/Gallery/9.png',
       '/kamadhenu%20pearls%20_final%20draft_/senior%20citizen%20park.png',
     ],
     floorPlanImages: [
@@ -172,7 +177,7 @@ export const VENTURES: Venture[] = [
       },
       {
         title: 'Kids Themed Park',
-        image: '/kamadhenu%20pearls%20_final%20draft_/Gallery/1.png',
+        image: '/kamadhenu%20pearls%20_final%20draft_/kids-park.png',
         items: [
           'Kids Play Area',
           'Kids Jungle Gym',
@@ -314,30 +319,29 @@ export const VENTURES: Venture[] = [
     status: 'Live',
     order: 2,
     brochurePdf: '/BLISS%20Valley/Brochure_Bliss%20Valley%20final%20final%20draft%20(1).pdf',
-    listingImage: '/BLISS%20Valley/pages/page-03.jpg',
-    coverImage: '/BLISS%20Valley/pages/page-03.jpg',
-    clubhouseImage: '/BLISS%20Valley/pages/page-06.jpg',
+    listingImage: '/BLISS%20Valley/gallery/page-03.jpg',
+    coverImage: '/BLISS%20Valley/gallery/page-03.jpg',
+    clubhouseImage: '/BLISS%20Valley/gallery/page-14.jpg',
     gallery: [
-      '/BLISS%20Valley/pages/page-03.jpg',
-      '/BLISS%20Valley/pages/page-06.jpg',
-      '/BLISS%20Valley/pages/page-08.jpg',
-      '/BLISS%20Valley/pages/page-09.jpg',
-      '/BLISS%20Valley/pages/page-10.jpg',
-      '/BLISS%20Valley/pages/page-11.jpg',
-      '/BLISS%20Valley/pages/page-12.jpg',
-      '/BLISS%20Valley/pages/page-13.jpg',
-      '/BLISS%20Valley/pages/page-14.jpg',
+      '/BLISS%20Valley/gallery/page-03.jpg',
+      '/BLISS%20Valley/gallery/page-08.jpg',
+      '/BLISS%20Valley/gallery/page-09.jpg',
+      '/BLISS%20Valley/gallery/page-10.jpg',
+      '/BLISS%20Valley/gallery/page-11.jpg',
+      '/BLISS%20Valley/gallery/page-12.jpg',
+      '/BLISS%20Valley/gallery/page-13.jpg',
+      '/BLISS%20Valley/gallery/page-14.jpg',
     ],
     floorPlanImages: [
-      '/BLISS%20Valley/pages/page-04.jpg',
-      '/BLISS%20Valley/pages/page-08.jpg',
+      '/BLISS%20Valley/gallery/page-04.jpg',
+      '/BLISS%20Valley/gallery/page-08.jpg',
     ],
     floorPlanGroups: [
       {
         title: 'Master Layout Plan',
         images: [
-          { label: 'Layout Plan — APCRDA & AP RERA Approved', src: '/BLISS%20Valley/pages/page-04.jpg' },
-          { label: 'Master Plan — Aerial View', src: '/BLISS%20Valley/pages/page-08.jpg' },
+          { label: 'Layout Plan — APCRDA & AP RERA Approved', src: '/BLISS%20Valley/gallery/page-04.jpg' },
+          { label: 'Master Plan — Aerial View', src: '/BLISS%20Valley/gallery/page-08.jpg' },
         ],
       },
     ],
@@ -388,7 +392,7 @@ export const VENTURES: Venture[] = [
     amenityGroups: [
       {
         title: 'Club Amenities',
-        image: '/BLISS%20Valley/pages/page-06.jpg',
+        image: '/BLISS%20Valley/gallery/page-14.jpg',
         items: [
           'Reception Lobby',
           'Maintenance Office',
@@ -402,7 +406,7 @@ export const VENTURES: Venture[] = [
       },
       {
         title: 'Landscape Amenities',
-        image: '/BLISS%20Valley/pages/page-07.jpg',
+        image: '/BLISS%20Valley/gallery/page-09.jpg',
         items: [
           'Cricket Net Practice',
           'Children Play Area',

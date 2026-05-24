@@ -61,7 +61,7 @@ export default async function PartnersPage() {
                     <div
                       className={`absolute -bottom-5 ${
                         reversed ? '-left-5 lg:-left-8' : '-right-5 lg:-right-8'
-                      } lg:-bottom-8 w-2/3 h-2/3 border border-gold/60 -z-0`}
+                      } lg:-bottom-8 w-2/3 h-2/5 border border-gold/60 -z-0`}
                       aria-hidden
                     />
                   </div>

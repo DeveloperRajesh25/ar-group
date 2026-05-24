@@ -91,6 +91,14 @@ const config: Config = {
           '0%, 100%': { filter: 'hue-rotate(0deg)' },
           '50%': { filter: 'hue-rotate(12deg)' },
         },
+        'shine-r': {
+          '0%': { transform: 'translateX(-120%)' },
+          '100%': { transform: 'translateX(420%)' },
+        },
+        'shine-l': {
+          '0%': { transform: 'translateX(420%)' },
+          '100%': { transform: 'translateX(-120%)' },
+        },
       },
       animation: {
         'fade-up': 'fade-up 0.8s ease-out forwards',
@@ -101,6 +109,8 @@ const config: Config = {
         'drift-2': 'drift-2 26s ease-in-out infinite',
         'drift-3': 'drift-3 30s ease-in-out infinite',
         'hue-shift': 'hue-shift 24s ease-in-out infinite',
+        'shine-r': 'shine-r 1.4s linear infinite',
+        'shine-l': 'shine-l 1.4s linear infinite',
       },
     },
   },
