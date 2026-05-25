@@ -122,9 +122,19 @@ export function Footer({ siteSettings, ventures }: FooterProps) {
             <p className="text-xs text-beige/60">
               © {year} {siteSettings.companyName || SITE.legalName}. All rights reserved.
             </p>
-            <p className="text-xs tracking-widest uppercase text-gold-soft font-inter font-medium">
-              {SITE.slogan}
-            </p>
+            <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6">
+              <p className="text-xs tracking-widest uppercase text-gold-soft font-inter font-medium">
+                {SITE.slogan}
+              </p>
+              <a
+                href="https://www.webcros.in/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-beige/60 hover:text-gold-soft transition-colors"
+              >
+                Developed by WebCros
+              </a>
+            </div>
           </div>
         </div>
       </div>
